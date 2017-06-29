@@ -1,3 +1,9 @@
+function assert (condition, message) {
+  if (!condition) {
+    throw new Error(message)
+  }
+}
+
 function createMessage (displayName) {
   function Message (...args) {
     if (!(this instanceof Message)) {
@@ -12,6 +18,7 @@ function createMessage (displayName) {
   }
 
   Message.unwrap = function unwrap (message, fn) {
+    assert(Message.is(message), 'Cannot unwrap messages using an incorrect type')
     return fn.apply(null, message.args)
   }
 
@@ -48,10 +55,25 @@ function createMessageUnion (displayName, types) {
 }
 
 function unionMatch (types, cases, type) {
-  const fullCases = Math.floor(cases.length / 2)
   const hasCatchAll = cases.length % 2 === 1
+  let fullCases = cases.length
+  if (hasCatchAll) {
+    fullCases = fullCases - 1
+  }
+  fullCases = fullCases / 2
+
   if (!hasCatchAll) {
-    // assert all message types are accounted for in the cases
+    const typeCases = []
+    const caseTypes = cases.filter(function even (_, i) {
+      return (i % 2) === 0
+    })
+    caseTypes.forEach(function (type) {
+      const isTypeCovered = typeCases.includes(type)
+      assert(!isTypeCovered, 'Each message can only be covered by one case')
+      typeCases.push(type)
+    })
+    assert(types.length === caseTypes.length, 'Each message should have exactly one case')
+    assert(typeCases.length === caseTypes.length, 'Each message needs to be handled')
   }
 
   for (let i = 0; i < fullCases; i++) {
@@ -62,9 +84,7 @@ function unionMatch (types, cases, type) {
     }
   }
 
-  if (!hasCatchAll) {
-    // assert message type not found in match
-  }
+  assert(hasCatchAll, 'No type was found that matches the passed value')
   return cases[cases.length - 1]()
 }
 
