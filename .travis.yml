@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- node
+deploy:
+  provider: npm
+  email: christopher.andrejewski@gmail.com
+  api_key:
+    secure: rgQRT6Sd89F0ywRkIKSLHPoOTuRPgzODKud79vOiX7Xt3aqmVAPFTxZbpZlSyjPwT+I31YTeJxdRdNKnuJKqxrlmsTWEkcCWFzrbQ9VGfCzK0V00VWOU1sdUZseBSSIevSfD9j5835RWhnLbOo8OR3PTgvkhVcr4+E9szP3vEtCN4T1XVrm5wkx2hgQWFpGBBw2lqrckzUoioiHuh360vtcplrqPszVgLXqXmsPzd0M6VEe/+yBIxGN+yZUIRTrjIbyeNHiCoR60liAOxfzx/tt/q2hvnxhiKqyGREGb8qryiYTGygO457Rp9DideVDtjtyawVotaYNvnaBCdVv9LJeSH2VkMM29+bfoRcQ5XzJDG8XPVRgrogwlPIPMKi7XGngVBxI9QFyGcBnWtmp/z/aFDpJnfgKFesR6x9ThZDr2eOXhBS7fR0q5N+IRjWAcowmS/fgBY9VN/CgToCsu5be7/XYvVJwHBYnDre3ORhIiXs2P5zaJHa2br4rPY0bxipfieKFAksmxC5mm3N0WCxP3nUnLi/kjItBt3GfmWhEv3WlZIMdU+m4s779l+4//xA3lcGv23aZfQ0RlHSqCuilrK54UbA/fyBCqMj6rNnHWpH3zPBf8DivBdf1/WpnjIxkAUGpvnmVnBxlDC66mECP4svDDCfS4F373nuqTHj4=
+  on:
+    tags: true
+    repo: andrejewski/raj

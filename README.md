@@ -1,9 +1,13 @@
 # Raj
-The best JavaScript framework
+
+> The best JavaScript framework
 
 ```sh
 npm install raj
 ```
+
+[![npm](https://img.shields.io/npm/v/raj.svg)](https://www.npmjs.com/package/raj)
+[![Build Status](https://travis-ci.org/andrejewski/raj.svg?branch=master)](https://travis-ci.org/andrejewski/raj)
 
 ## Documentation
 
@@ -11,7 +15,7 @@ npm install raj
   - `message([displayName])`: create a message
   - `message.union([displayName, ] messages)`: create a message union
 - `raj/react`: React bindings
-  - `program({init, update, view, flags})`: create a React component using the provided options
+  - `program(React, {init, update, view, flags})`: create a React component using the provided options
     - `init(flags, props)`: create the initial state
     - `update(state, message)`: return the new state and optional command
     - `view(state, dispatch)`: return the React view
@@ -21,11 +25,9 @@ npm install raj
 
 ```js
 // Search.js
-
+import React from 'react'
 import message from 'raj/message'
 import react from 'raj/react'
-
-import React from 'react' // so JSX works
 
 // model
 export function init () {
@@ -37,10 +39,10 @@ export function init () {
   }
 }
 
-// actions
-export const ChangeQuery = message(String)
-export const ReceiveResults = message([String])
-export const ReceiveError = message(Error)
+// messages
+export const ChangeQuery = message()
+export const ReceiveResults = message()
+export const ReceiveError = message()
 export const Search = message.union([
   ChangeQuery,
   ReceiveError,
@@ -95,7 +97,7 @@ export function InputView ({text, onChange}) {
   return <input {...inputProps} />
 }
 
-// commands
+// effects
 export function fetchResults (query) {
   return function fetchCommand (dispatch) {
     return fetch('/my/search/endpoint')
@@ -111,7 +113,7 @@ export function fetchResults (query) {
 
 // assemble
 export function main () {
-  return react.program({
+  return react.program(React, {
     init,
     update,
     view

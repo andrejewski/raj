@@ -1,6 +1,4 @@
-const React = require('react')
-
-function program ({init, update, view, flags}) {
+function program (React, {init, update, view, flags}) {
   return class Program extends React.Component {
     constructor (props) {
       super(props)
