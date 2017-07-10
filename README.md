@@ -21,102 +21,23 @@ npm install raj
     - `view(state, dispatch)`: return the React view
     - `flags`: optional argument to `init`
 
-## Example
+## Architecture
 
-```js
-// Search.js
-import React from 'react'
-import message from 'raj/message'
-import react from 'raj/react'
+The data flow is unidirectional.
+The update creates a new state and optionally triggers an effect based on the current state and a received message.
+The view is a function of state.
+The view and any side-effects communicate by dispatching messages.
 
-// model
-export function init () {
-  return {
-    searchQuery: '',
-    searchResults: [],
-    isLoading: false,
-    error: null
-  }
-}
+Building any app follows the same steps:
 
-// messages
-export const ChangeQuery = message()
-export const ReceiveResults = message()
-export const ReceiveError = message()
-export const Search = message.union([
-  ChangeQuery,
-  ReceiveError,
-  ReceiveResults
-])
+1. Define your data model with `init(flags)`
+1. Define your messages with `message/message.union`
+1. Define your behaviors with `update(state, msg)`
+1. Define your effects as functions which accept a dispatch function
+1. Define your view with `view(state, dispatch)`
+1. Tie it all together as `main()`
 
-// update
-export function update (state, message) {
-  return Search.match(message, [
-    ChangeQuery, query => [{
-      ...state,
-      searchQuery: query,
-      isLoading: true
-    }, fetchResults(query)],
-    ReceiveResults, results => ({
-      ...state,
-      searchResults: results,
-      isLoading: false,
-      error: null
-    }),
-    ReceiveError, error => ({
-      ...state,
-      error,
-      isLoading: false
-    })
-  ])
-}
+## Examples
 
-// view
-export function view (state, dispatch) {
-  return <div>
-    <InputView
-      text={state.searchQuery}
-      onChange={newQuery =>
-        dispatch(ChangeQuery(newQuery))
-      } />
-    <ul>
-      {state.results.map(result =>
-        <li key={result}>{result}</li>
-      )}
-    </ul>
-  </div>
-}
-
-export function InputView ({text, onChange}) {
-  const inputProps = {
-    text,
-    onInput: event => {
-      onChange(event.target.value)
-    }
-  }
-  return <input {...inputProps} />
-}
-
-// effects
-export function fetchResults (query) {
-  return function fetchCommand (dispatch) {
-    return fetch('/my/search/endpoint')
-      .then(res => res.json())
-      .then(payload => {
-        dispatch(ReceiveResults(payload.results))
-      })
-      .catch(error => {
-        dispatch(ReceiveError(error))
-      })
-  }
-}
-
-// assemble
-export function main () {
-  return react.program(React, {
-    init,
-    update,
-    view
-  })
-}
-```
+- `examples/search`: Dummy search widget where a query updates a list of search results.
+- `examples/make-n-model`: Dummy loader where a selected make loads a list of relevant models.
