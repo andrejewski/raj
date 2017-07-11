@@ -22,9 +22,9 @@ function program (React, {init, update, view, flags}) {
       setTimeout(() => effect(this._dispatch), 0)
     }
 
-    dispatch (action) {
+    dispatch (message) {
       this.setState(oldState => {
-        const [state, effect] = marshal(update(oldState, action))
+        const [state, effect] = marshal(update(message, oldState))
         if (effect) {
           this.command(effect)
         }

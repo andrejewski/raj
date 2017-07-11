@@ -17,7 +17,7 @@ export const Msg = message.union([
   ReceiveModels
 ])
 
-export function update (state, msg) {
+export function update (msg, state) {
   return Msg.match(msg, [
     SetMake, id => {
       return [

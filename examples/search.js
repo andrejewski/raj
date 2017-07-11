@@ -20,8 +20,8 @@ export const Search = message.union([
   ReceiveResults
 ])
 
-export function update (state, message) {
-  return Search.match(message, [
+export function update (msg, state) {
+  return Search.match(msg, [
     ChangeQuery, query => [{
       ...state,
       searchQuery: query,
