@@ -16,8 +16,9 @@ npm install raj
   - `message.union([displayName, ] messages)`: create a message union
 - `raj/react`: React bindings
   - `program(React, {init, update, view, flags})`: create a React component using the provided options
-    - `init(flags, props)`: create the initial state
-    - `update(state, message)`: return the new state and optional command
+    - `React`: a version of React which has `React.Component`
+    - `init(flags, props)`: return the initial state and optional effect
+    - `update(state, message)`: return the new state and optional effect
     - `view(state, dispatch)`: return the React view
     - `flags`: optional argument to `init`
 
@@ -32,10 +33,10 @@ Building any app follows the same steps:
 
 1. Define your data model with `init(flags)`
 1. Define your messages with `message/message.union`
-1. Define your behaviors with `update(state, msg)`
+1. Define your behaviors with `update(state, message)`
 1. Define your effects as functions which accept a dispatch function
 1. Define your view with `view(state, dispatch)`
-1. Tie it all together as `main()`
+1. Tie it all together with `program()`
 
 ## Examples
 

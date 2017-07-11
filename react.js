@@ -1,28 +1,34 @@
+function marshal (result) {
+  if (Array.isArray(result)) {
+    return result
+  } else {
+    return [result]
+  }
+}
+
 function program (React, {init, update, view, flags}) {
   return class Program extends React.Component {
     constructor (props) {
       super(props)
-      this.state = init(flags, props)
       this._dispatch = this.dispatch.bind(this)
+      const [state, effect] = marshal(init(flags, props))
+      this.state = state
+      if (effect) {
+        this.command(effect)
+      }
+    }
+
+    command (effect) {
+      setTimeout(() => effect(this._dispatch), 0)
     }
 
     dispatch (action) {
       this.setState(oldState => {
-        const result = update(oldState, action)
-        let newState
-        let command
-        if (!Array.isArray(oldState)) {
-          newState = result
-        } else {
-          newState = result[0]
-          command = result[1]
+        const [state, effect] = marshal(update(oldState, action))
+        if (effect) {
+          this.command(effect)
         }
-
-        if (command) {
-          setTimeout(() => command(this._dispatch), 0)
-        }
-
-        return newState
+        return state
       })
     }
 
