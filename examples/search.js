@@ -3,12 +3,12 @@ import message from 'raj/message'
 import react from 'raj/react'
 
 export function init () {
-  return {
+  return [{
     searchQuery: '',
     searchResults: [],
     isLoading: false,
     error: null
-  }
+  }]
 }
 
 export const ChangeQuery = message()
@@ -27,17 +27,17 @@ export function update (msg, state) {
       searchQuery: query,
       isLoading: true
     }, fetchResults(query)],
-    ReceiveResults, results => ({
+    ReceiveResults, results => [{
       ...state,
       searchResults: results,
       isLoading: false,
       error: null
-    }),
-    ReceiveError, error => ({
+    }],
+    ReceiveError, error => [{
       ...state,
       error,
       isLoading: false
-    })
+    }]
   ])
 }
 

@@ -1,17 +1,9 @@
-function marshal (result) {
-  if (Array.isArray(result)) {
-    return result
-  } else {
-    return [result]
-  }
-}
-
 function program (React, {init, update, view, flags}) {
   return class Program extends React.Component {
     constructor (props) {
       super(props)
       this._dispatch = this.dispatch.bind(this)
-      const [state, effect] = marshal(init(flags, props))
+      const [state, effect] = init(flags, props)
       this.state = state
       if (effect) {
         this.command(effect)
@@ -24,7 +16,7 @@ function program (React, {init, update, view, flags}) {
 
     dispatch (message) {
       this.setState(oldState => {
-        const [state, effect] = marshal(update(message, oldState))
+        const [state, effect] = update(message, oldState)
         if (effect) {
           this.command(effect)
         }

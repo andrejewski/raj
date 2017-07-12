@@ -25,11 +25,11 @@ export function update (msg, state) {
         loadModelsForMake(id, ReceiveModels)
       ]
     },
-    ReceiveModels, models => ({
+    ReceiveModels, models => [{
       ...state,
       models,
       isLoading: false
-    })
+    }]
   ])
 }
 
