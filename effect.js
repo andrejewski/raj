@@ -3,20 +3,20 @@ function map (fn, effect) {
     return effect
   }
 
-  return function _map (dispatch, io) {
+  return function _map (dispatch) {
     function intercept (message) {
       dispatch(fn(message))
     }
 
-    return effect(intercept, io)
+    return effect(intercept)
   }
 }
 
 function batch (effects) {
-  return function _batch (dispatch, ios = []) {
-    return effects.map((effect, index) => {
+  return function _batch (dispatch) {
+    return effects.map(effect => {
       if (effect) {
-        return effect(dispatch, ios[index])
+        return effect(dispatch)
       }
     })
   }

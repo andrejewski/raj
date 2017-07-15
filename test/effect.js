@@ -32,17 +32,6 @@ test('map() should not wrap a falsey effect', t => {
   })
 })
 
-test('map() should pass the second argument to the effect', t => {
-  const val = 1
-  const id = x => x
-  function rawEffect (dispatch, arg) {
-    t.is(arg, val)
-  }
-
-  const newEffect = effect.map(id, rawEffect)
-  newEffect(null, val)
-})
-
 test('map() should return the result of the effect', t => {
   const id = x => x
   const rawEffect = () => 1
@@ -77,16 +66,6 @@ test('batch() should not call falsey values', t => {
     const effects = effect.batch([null, false, undefined, 0])
     effects()
   })
-})
-
-test('batch() should pass each effect its second argument', t => {
-  const makeEffect = expectedArg => (dispatch, actualArg) => {
-    t.is(actualArg, expectedArg)
-  }
-
-  const args = [1, 2, 3]
-  const effects = effect.batch(args.map(makeEffect))
-  effects(null, args)
 })
 
 test('batch() should return the effects return values', t => {
