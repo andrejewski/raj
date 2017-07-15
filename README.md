@@ -14,6 +14,9 @@ npm install raj
 - `raj/message`: define message and message unions
   - `message([displayName])`: create a message
   - `message.union([displayName, ] messages)`: create a message union
+- `raj/effect`: group and transform effects
+  - `effect.map(mapper, effect)`: transforms the dispatched values of `effect` using the function `mapper`
+  - `effect.batch(effects)`: group an array of effects into a single effect
 - `raj/react`: React bindings
   - `program(React, {init, update, view, flags})`: create a React component using the provided options
     - `React`: a version of React which has `React.Component`
