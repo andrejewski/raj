@@ -14,13 +14,17 @@ npm install raj
 - `raj/message`: define message and message unions
   - `message([displayName])`: create a message
   - `message.union([displayName, ] messages)`: create a message union
+- `raj/program`: create a program
+  - `program({init, update, renderer})`
+    - `init`: the initial state and optional effect
+    - `update(message, state)`: return the new state and optional effect
+    - `renderer(state, dispatch)`: use the state and dispatch messages
 - `raj/react`: React bindings
-  - `program(React, {init, update, view, flags})`: create a React component using the provided options
+  - `program(React, {init, update, view})`: create a React program
     - `React`: a version of React which has `React.Component`
-    - `init(flags, props)`: return the initial state and optional effect
+    - `init(props)`: return the initial state and optional effect
     - `update(message, state)`: return the new state and optional effect
     - `view(state, dispatch)`: return the React view
-    - `flags`: optional argument to `init`
 
 ## Architecture
 
