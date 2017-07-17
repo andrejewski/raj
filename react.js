@@ -1,21 +1,27 @@
-const program = require('./program')
+const {program} = require('./runtime')
 
 function reactProgram (React, {init, update, view}) {
   return class ReactProgram extends React.Component {
     constructor (props) {
       super(props)
-      this._program = program({
+      let initial = true
+      program({
         init: init(props),
         update,
         renderer: (dispatch, state) => {
           this._dispatch = dispatch
-          this.setState(() => state)
+          if (initial) {
+            this.state = {state}
+            initial = false
+          } else {
+            this.setState(() => ({state}))
+          }
         }
       })
     }
 
     render () {
-      return view(this.state, this._dispatch)
+      return view(this.state.state, this._dispatch)
     }
   }
 }

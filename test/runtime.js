@@ -1,5 +1,5 @@
 import test from 'ava'
-import {program} from '../program'
+import {program} from '../runtime'
 
 test('program() should call renderer() initially', t => {
   const initialState = 1
