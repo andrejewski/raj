@@ -1,7 +1,7 @@
 const {program} = require('./runtime')
 
-function reactProgram (React, {init, update, view}) {
-  return class ReactProgram extends React.Component {
+function reactProgram (Component, {init, update, view}) {
+  return class ReactProgram extends Component {
     constructor (props) {
       super(props)
       let initial = true

@@ -59,7 +59,7 @@ export function view (state, dispatch) {
 }
 
 export default function main () {
-  return react.program(React, {
+  return react.program(React.Component, {
     init,
     update,
     view
