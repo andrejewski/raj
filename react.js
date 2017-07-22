@@ -8,7 +8,7 @@ function reactProgram (Component, {init, update, view}) {
       program({
         init: init(props),
         update,
-        renderer: (dispatch, state) => {
+        view: (state, dispatch) => {
           this._dispatch = dispatch
           if (initial) {
             this.state = {state}
