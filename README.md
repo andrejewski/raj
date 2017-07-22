@@ -26,7 +26,7 @@ npm install raj
 #### Integrations
 - `raj/react`: React bindings
   - `program(Component, {init, update, view})`: create a React program
-    - `Component`: a React or Preact Component class
+    - `Component`: a React Component class
     - `init(props)`: return the initial state and optional effect
     - `update(message, state)`: return the new state and optional effect
     - `view(state, dispatch)`: return the React view
