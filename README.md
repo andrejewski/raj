@@ -18,10 +18,10 @@ npm install raj
   - `effect.map(mapper, effect)`: transforms the dispatched values of `effect` using the function `mapper`
   - `effect.batch(effects)`: group an array of effects into a single effect
 - `raj/runtime`: create generic runtimes
-  - `program({init, update, renderer})`
+  - `program({init, update, view})`
     - `init`: the initial state and optional effect
     - `update(message, state)`: return the new state and optional effect
-    - `renderer(state, dispatch)`: use the state and dispatch messages
+    - `view(state, dispatch)`: use the state and dispatch messages
 
 #### Integrations
 - `raj/react`: React bindings

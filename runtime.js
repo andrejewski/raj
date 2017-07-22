@@ -1,4 +1,4 @@
-function program ({init, update, renderer}) {
+function program ({init, update, view}) {
   let state
 
   function change ([newState, effect]) {
@@ -6,7 +6,7 @@ function program ({init, update, renderer}) {
     if (effect) {
       setTimeout(() => effect(dispatch), 0)
     }
-    renderer(dispatch, state)
+    view(state, dispatch)
   }
 
   function dispatch (message) {

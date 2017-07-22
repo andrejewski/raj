@@ -1,12 +1,12 @@
 import test from 'ava'
 import {program} from '../runtime'
 
-test('program() should call renderer() initially', t => {
+test('program() should call view() initially', t => {
   const initialState = 1
   return new Promise(resolve => {
     program({
       init: [initialState],
-      renderer (dispatch, state) {
+      view (state) {
         t.is(state, initialState)
         resolve()
       }
@@ -14,7 +14,7 @@ test('program() should call renderer() initially', t => {
   })
 })
 
-test('program() should call renderer() after dispatch', t => {
+test('program() should call view() after dispatch', t => {
   let count = 0
   return new Promise(resolve => {
     program({
@@ -22,7 +22,7 @@ test('program() should call renderer() after dispatch', t => {
       update (msg) {
         return [msg]
       },
-      renderer (dispatch, state) {
+      view (state, dispatch) {
         count++
         if (state === 'init') {
           return dispatch('next')
