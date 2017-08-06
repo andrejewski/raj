@@ -1,1 +1,1 @@
-throw new Error('Do not import/require raj directly, use "raj/message" or "raj/react"')
+throw new Error('Do not import/require raj directly, use "raj/runtime" or "raj/effect"')

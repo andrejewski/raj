@@ -1,6 +1,6 @@
 import React from 'react'
-import message from 'raj/message'
 import react from 'raj/react'
+import message from 'tagmeme'
 
 export function init () {
   return {

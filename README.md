@@ -11,9 +11,6 @@ npm install raj
 
 ## Documentation
 
-- `raj/message`: define message and message unions
-  - `message([displayName])`: create a message
-  - `message.union([displayName, ] messages)`: create a message union
 - `raj/effect`: group and transform effects
   - `effect.map(mapper, effect)`: transforms the dispatched values of `effect` using the function `mapper`
   - `effect.batch(effects)`: group an array of effects into a single effect
@@ -41,7 +38,7 @@ The view and any side-effects communicate by dispatching messages.
 Building any app follows the same steps:
 
 1. Define your data model with `init(flags)`
-1. Define your messages with `message/message.union`
+1. Define your messages with something like [`tagmeme`](https://github.com/andrejewski/tagmeme)
 1. Define your behaviors with `update(message, state)`
 1. Define your effects as functions which accept a dispatch function
 1. Define your view with `view(state, dispatch)`
