@@ -2,7 +2,7 @@
   "name": "raj",
   "description": "The best JavaScript framework",
   "version": "0.0.6",
-  "author": "Chris Andrejewski <christopher.andrejewski@gmail>",
+  "author": "Chris Andrejewski <christopher.andrejewski@gmail.com>",
   "bugs": {
     "url": "https://github.com/andrejewski/raj/issues"
   },
@@ -20,8 +20,8 @@
   "keywords": [
     "best",
     "framework",
-    "runtime",
-    "react"
+    "react",
+    "runtime"
   ],
   "license": "MIT",
   "main": "index.js",

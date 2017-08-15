@@ -1,18 +1,16 @@
 import React from 'react'
 import react from 'raj/react'
-import message from 'tagmeme'
+import tag from 'tagmeme'
 
-export function init () {
-  return {
-    makeId: null,
-    isLoading: false,
-    models: []
-  }
-}
+export const init = [{
+  makeId: null,
+  isLoading: false,
+  models: []
+}]
 
-export const SetMake = message()
-export const ReceiveModels = message()
-export const Msg = message.union([
+export const SetMake = tag()
+export const ReceiveModels = tag()
+export const Msg = tag.union([
   SetMake,
   ReceiveModels
 ])
@@ -33,12 +31,12 @@ export function update (msg, state) {
   ])
 }
 
-export function loadModelsForMake (id, message) {
+export function loadModelsForMake (id, tag) {
   return function (dispatch) {
     window.fetch(`/models?id=${id}`)
       .then(res => res.json())
       .then(res => {
-        dispatch(message(res.models))
+        dispatch(tag(res.models))
       })
   }
 }
@@ -59,9 +57,9 @@ export function view (state, dispatch) {
 }
 
 export default function main () {
-  return react.program(React.Component, {
+  return react.program(React.Component, () => ({
     init,
     update,
     view
-  })
+  }))
 }
