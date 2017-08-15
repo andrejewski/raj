@@ -1,20 +1,18 @@
 import React from 'react'
 import react from 'raj/react'
-import message from 'tagmeme'
+import tag from 'tagmeme'
 
-export function init () {
-  return [{
-    searchQuery: '',
-    searchResults: [],
-    isLoading: false,
-    error: null
-  }]
-}
+export const init = [{
+  searchQuery: '',
+  searchResults: [],
+  isLoading: false,
+  error: null
+}]
 
-export const ChangeQuery = message()
-export const ReceiveResults = message()
-export const ReceiveError = message()
-export const Search = message.union([
+export const ChangeQuery = tag()
+export const ReceiveResults = tag()
+export const ReceiveError = tag()
+export const Search = tag.union([
   ChangeQuery,
   ReceiveError,
   ReceiveResults
@@ -80,9 +78,9 @@ export function fetchResults (query) {
 }
 
 export function main () {
-  return react.program(React.Component, {
+  return react.program(React.Component, () => ({
     init,
     update,
     view
-  })
+  }))
 }

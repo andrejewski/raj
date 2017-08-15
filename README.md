@@ -22,9 +22,10 @@ npm install raj
 
 #### Integrations
 - `raj/react`: React bindings
-  - `program(Component, {init, update, view})`: create a React program
+  - `program(Component, props => ({init, update, view}))`: create a React program
     - `Component`: a React Component class
-    - `init(props)`: return the initial state and optional effect
+    - `props`: the React component `props`
+    - `init`: the initial state and optional effect
     - `update(message, state)`: return the new state and optional effect
     - `view(state, dispatch)`: return the React view
 
@@ -37,7 +38,7 @@ The view and any side-effects communicate by dispatching messages.
 
 Building any app follows the same steps:
 
-1. Define your data model with `init(flags)`
+1. Define your data model with `init`
 1. Define your messages with something like [`tagmeme`](https://github.com/andrejewski/tagmeme)
 1. Define your behaviors with `update(message, state)`
 1. Define your effects as functions which accept a dispatch function
