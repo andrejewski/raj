@@ -1,7 +1,4 @@
 # Raj
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/andrejewski/raj.svg)](https://greenkeeper.io/)
-
 > The best JavaScript framework
 
 ```sh
@@ -10,6 +7,7 @@ npm install raj
 
 [![npm](https://img.shields.io/npm/v/raj.svg)](https://www.npmjs.com/package/raj)
 [![Build Status](https://travis-ci.org/andrejewski/raj.svg?branch=master)](https://travis-ci.org/andrejewski/raj)
+[![Greenkeeper badge](https://badges.greenkeeper.io/andrejewski/raj.svg)](https://greenkeeper.io/)
 
 ## Documentation
 
