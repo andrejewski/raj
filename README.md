@@ -1,5 +1,7 @@
 # Raj
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/andrejewski/raj.svg)](https://greenkeeper.io/)
+
 > The best JavaScript framework
 
 ```sh
