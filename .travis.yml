@@ -1,9 +1,6 @@
 language: node_js
 node_js:
 - node
-before_install: npm install -g greenkeeper-lockfile@1
-before_script: greenkeeper-lockfile-update
-after_script: greenkeeper-lockfile-upload
 deploy:
   provider: npm
   email: christopher.andrejewski@gmail.com
