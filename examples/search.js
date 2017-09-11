@@ -1,5 +1,5 @@
 import React from 'react'
-import react from 'raj/react'
+import react from 'raj-react'
 import tag from 'tagmeme'
 
 export const init = [{
