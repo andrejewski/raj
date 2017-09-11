@@ -9,6 +9,7 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.22.0",
+    "fixpack": "^2.3.1",
     "standard": "^10.0.2"
   },
   "homepage": "https://github.com/andrejewski/raj#readme",
