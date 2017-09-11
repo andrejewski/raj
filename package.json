@@ -1,7 +1,7 @@
 {
   "name": "raj",
   "description": "The best JavaScript framework",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": "Chris Andrejewski <christopher.andrejewski@gmail.com>",
   "bugs": {
     "url": "https://github.com/andrejewski/raj/issues"
