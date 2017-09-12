@@ -80,17 +80,22 @@ Examples exist in the `examples/` folder.
 
 ##### Raj packages
 
-| Package | Description |
-| ------- | ----------- |
-| [`raj-compose`](https://github.com/andrejewski/raj-compose) | Program composition. Raj applications assemble from small programs. Common composition patterns are in this package. |
-| [`raj-react`](https://github.com/andrejewski/raj-react) | React bindings. Raj is view library agnostic. This package integrates Raj's runtime into the React ecosystem. |
-| [`raj-spa`](https://github.com/andrejewski/raj-spa) | Single page applications. Most apps need a way of coordinating navigation and views. This package provides a coordinator which has lazy-loading and code-splitting support. |
+#### [`raj-compose`](https://github.com/andrejewski/raj-compose)
+Program composition. Raj applications assemble from small programs. Composition utilities are in this package.
+
+#### [`raj-react`](https://github.com/andrejewski/raj-react)
+React bindings. Raj is view library agnostic. This package integrates Raj's runtime into the React ecosystem.
+
+#### [`raj-spa`](https://github.com/andrejewski/raj-spa)
+Single page applications. Most apps need a way of coordinating navigation and views. This package provides a coordinator which has lazy-loading and code-splitting support.
+
+#### [`raj-web-debugger`](https://github.com/andrejewski/raj-web-debugger)
+Time traveling debugger. The design of Raj programs allows us to pause, play, and rewind them. This package contains a debugger with those features for web applications.
 
 ##### Recommended non-Raj packages
 
-| Package | Description |
-| ------- | ----------- |
-| [`tagmeme`](https://github.com/andrejewski/tagmeme) | Tagged union library. The Raj runtime is message driven. Tagmeme is the recommended way to construct messages. It has tagged unions with pattern matching. |
+#### [`tagmeme`](https://github.com/andrejewski/tagmeme)
+Tagged union library. The Raj runtime is message driven. Tagmeme is the recommended way to construct messages. It has tagged unions with pattern matching.
 
 ## Roadmap
 
