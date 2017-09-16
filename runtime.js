@@ -1,5 +1,12 @@
-function program ({init, update, view}) {
+function program ({init, update, view, done}) {
   let state
+  let isRunning = true
+
+  function dispatch (message) {
+    if (isRunning) {
+      change(update(message, state))
+    }
+  }
 
   function change ([newState, effect]) {
     state = newState
@@ -9,11 +16,20 @@ function program ({init, update, view}) {
     view(state, dispatch)
   }
 
-  function dispatch (message) {
-    change(update(message, state))
-  }
-
   change(init)
+
+  return function kill () {
+    if (!isRunning) {
+      return
+    }
+    isRunning = false
+    if (done) {
+      const effect = done(state)
+      if (effect) {
+        setTimeout(() => effect(), 0)
+      }
+    }
+  }
 }
 
 module.exports = {program}
