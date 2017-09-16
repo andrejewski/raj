@@ -9,6 +9,28 @@ npm install raj
 [![Build Status](https://travis-ci.org/andrejewski/raj.svg?branch=master)](https://travis-ci.org/andrejewski/raj)
 [![Greenkeeper badge](https://badges.greenkeeper.io/andrejewski/raj.svg)](https://greenkeeper.io/)
 
+## Example
+A counter that increments by one every time the user confirms.
+
+```js
+import {program} from 'raj/runtime'
+
+program({
+  init: [0], // State is an integer to count
+  update (message, state) {
+    return [state + 1] // Increment the state
+  },
+  view (state, dispatch) {
+    const keepCounting = window.confirm(`Count is ${state}. Increment?`)
+    if (keepCounting) {
+      dispatch()
+    }
+  }
+})
+```
+
+*Note:* Raj is view layer agnostic. Here we use the browser's built-in view to play the part.
+
 ## Architecture
 
 The data flow is unidirectional.
@@ -46,35 +68,9 @@ interface RajProgram<State, Message, View> {
 }
 ```
 
-*Note: TypeScript is not required for Raj applications. This is hard to read, so I wanted syntax highlighting from a typed language.*
+*Note:* TypeScript is not required for Raj applications. This is hard to read, so I wanted syntax highlighting from a typed language.
 
-The `runtime` module itself is about 20 lines of JavaScript, which may be easier to understand for those who are not familiar with TypeScript.
-
-## Example
-A counter that increments by one every time the user confirms.
-
-```js
-import {program} from 'raj/runtime'
-
-// State: Integer - We need a single number to count
-// Message: void - We receive one message, increment
-// View: void - We use the confirm() pop-up as our "view"
-
-program({
-  init: [0],
-  update (message, state) {
-    return [state + 1]
-  },
-  view (state, dispatch) {
-    const keepCounting = window.confirm(`Count is ${state}. Increment?`)
-    if (keepCounting) {
-      dispatch()
-    }
-  }
-})
-```
-
-Examples exist in the `examples/` folder.
+The `runtime` module itself is about 40 lines of JavaScript, which may be easier to understand for those who are not familiar with TypeScript.
 
 ## Ecosystem
 
