@@ -1,35 +1,40 @@
-function program ({init, update, view, done}) {
-  let state
-  let isRunning = true
+module.exports = {
+  program: function (program) {
+    var update = program.update
+    var view = program.view
+    var done = program.done
+    var state
+    var isRunning = true
+    var timeout = setTimeout
 
-  function dispatch (message) {
-    if (isRunning) {
-      change(update(message, state))
+    function dispatch (message) {
+      if (isRunning) {
+        change(update(message, state))
+      }
     }
-  }
 
-  function change ([newState, effect]) {
-    state = newState
-    if (effect) {
-      setTimeout(() => effect(dispatch), 0)
-    }
-    view(state, dispatch)
-  }
-
-  change(init)
-
-  return function kill () {
-    if (!isRunning) {
-      return
-    }
-    isRunning = false
-    if (done) {
-      const effect = done(state)
+    function change (change) {
+      state = change[0]
+      var effect = change[1]
       if (effect) {
-        setTimeout(() => effect(), 0)
+        timeout(function () { effect(dispatch) }, 0)
+      }
+      view(state, dispatch)
+    }
+
+    change(program.init)
+
+    return function kill () {
+      if (!isRunning) {
+        return
+      }
+      isRunning = false
+      if (done) {
+        var effect = done(state)
+        if (effect) {
+          timeout(function () { effect() }, 0)
+        }
       }
     }
   }
 }
-
-module.exports = {program}
