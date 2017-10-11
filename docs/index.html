@@ -15,157 +15,133 @@
     }
 
     main {
-      border-top: 3px solid #342590;
-      padding-bottom: 10vh;
+      padding-bottom: 3em;
     }
 
-    header {
+    .row {
+      margin: 0px auto;
       padding: 20px 0px;
+      max-width: 720px;
+    }
+
+    .row h3 {
+      font-family: Lato, Roboto, Helvetica, Arial, sans-serif;
+      font-size: 2em;
+      padding: 20px;
       margin: 0px;
     }
 
-    h1, h2, h3, h4 {font-family: Lato, Roboto, Helvetica, Arial, sans-serif;}
+    .header {
+      text-align: center;
+      padding: 50px 0px;
 
-    h1 {
-      margin: 0;
-      font-size: 10vh;
-      color: #111;
+      background: #ddeeff;
+      background: -moz-linear-gradient(top, #ddeeff 0%, #ffffff 100%);
+      background: -webkit-linear-gradient(top, #ddeeff 0%,#ffffff 100%);
+      background: linear-gradient(to bottom, #ddeeff 0%,#ffffff 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddeeff', endColorstr='#ffffff',GradientType=0 );
     }
 
-    h2 {
-      margin: 0 0 1em 0;
-      font-size: 3vh;
-      color: #333;
+    .header h1, h2 {
+      margin: 0px;
     }
 
-    h3 {
-      font-size: 2.5vh;
+    .header h1 {
+      font-family: Lato, Roboto, Helvetica, Arial, sans-serif;
+      font-size: 4em;
     }
 
-    header a {
+    .header h2 {
+      font-size: 1.2em;
+      font-weight: normal;
+    }
+
+    .buttons {
+      padding-top: 20px;
+    }
+
+    .column-2 {
       display: inline-block;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 3px;
-      text-decoration: none;
-      color: rgba(255,255,255,0.9);
-      background-color: #342590;
-      font-size: 1.8vh;
-    }
-
-    header a:hover {
-      color: #fff;
-    }
-
-    section {
-      margin: 0px auto;
+      vertical-align: top;
       padding: 20px;
-      width: 90vw;
-      max-width: 420px;
+      max-width: 320px;
     }
 
-    ul {
+    .list ul {
       margin: 0;
       padding: 0;
       list-style-type: none;
     }
 
-    li {
-      list-style-type: none;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
+    .list li {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 1.2em;
+      max-width: 350px;
     }
 
-    li div {
-      flex: 1;
-    }
-
-    li:before {
-      content: '►';
-      font-size: 2.4vh;
-      padding-right: 1.5vh;
-      margin-top: 0.5vh;
-    }
-
-    li a {
+    .list li > a,
+    .list li > div {
+      display: block;
       text-decoration: none;
+      padding: 20px;
       color: inherit;
     }
 
-    li a:hover {
+    .list li a:hover {
+      background-color: #def;
+    }
+
+    .list li a:hover h4 {
       text-decoration: underline;
     }
 
-    h4 {
-      font-size: 2.5vh;
-      margin: 0;
-      color: #333;
+    .list li h4 {
+      font-family: Lato, Roboto, Helvetica, Arial, sans-serif;
+      margin: 0px;
+      font-size: 1.2em;
     }
 
-    p {
-      margin: 0 0 2.5vh 0;
-      font-size: 2.5vh;
-      color: #222;
+    .list li p {
+      margin: 0px;
+      font-size: 1em;
+    }
+
+    @media (max-width: 720px) {
+      .row h3 {
+        max-width: 350px;
+        margin: 0px auto;
+      }
+
+      .list li {
+        display: block;
+        max-width: 100%;
+      }
+
+      .list li > a,
+      .list li > div {
+        max-width: 350px;
+        margin: 0px auto;
+      }
     }
   </style>
 </head>
 <body>
 
 <main>
-<section>
+<div class='header'>
+<section class='row'>
   <header>
     <h1>Raj</h1>
     <h2>The best JavaScript framework</h2>
+    <div class='buttons'>
+      <iframe src="https://ghbtns.com/github-btn.html?user=andrejewski&repo=raj&type=star&size=large" frameborder="0" scrolling="0" width="76px" height="30px"></iframe>
+    </div>
   </header>
-
 </section>
-<section>
-  <h3>Packages</h3>
-  <ul>
-    <li>
-      <div>
-        <h4><a href='https://github.com/andrejewski/raj'>raj</a></h4>
-        <p>
-          The core runtime for programs.
-          Runtimes can be used standalone or wrapped to integrate with view layers.
-        </p>
-      </div>
-    </li>
-    <li>
-      <div>
-        <h4><a href='https://github.com/andrejewski/raj-compose'>raj-compose</a></h4>
-        <p>
-          Program composition.
-          Applications assemble from small programs.
-        </p>
-      </div>
-    </li>
-    <li>
-      <div>
-        <h4><a href='https://github.com/andrejewski/raj-react'>raj-react</a></h4>
-        <p>
-          React bindings to integrate Raj's runtime into the React ecosystem.
-        </p>
-      </div>
-    </li>
-    <li>
-      <div>
-        <h4><a href='https://github.com/andrejewski/raj-spa'>raj-spa</a></h4>
-        <p>Single page applications and a way of coordinating navigation and views.</p>
-      </div>
-    </li>
+</div>
 
-    <li>
-      <div>
-        <h4><a href='https://github.com/andrejewski/raj-web-debugger'>raj-web-debugger</a></h4>
-        <p>Time traveling debugger to pause, play, and rewind programs.</p>
-      </div>
-    </li>
-  </ul>
-</section>
-
-<section>
+<section class='row list'>
 <h3>Features</h3>
 <ul>
   <li>
@@ -192,7 +168,6 @@
     <div>
       <h4>Replaceable</h4>
       <p>
-        We do not compete with other frameworks on massive feature sets.
         Raj provides the smallest core possible and you build only what you need.
         If it does not work for your use case, get rid of it.
       </p>
@@ -208,6 +183,63 @@
     </div>
   </li>
 </ul>
+</section>
+
+<section class='row list'>
+  <h3>Resources</h3>
+  <ul>
+    <li>
+      <a href='https://github.com/andrejewski/raj-by-example'>
+        <h4>Raj by Example</h4>
+        <p>
+          Learn how to build programs and applications with Raj.
+        </p>
+      </a>
+    </li>
+    <li>
+      <a href='https://jew.ski/why-raj/'>
+        <h4>Why Raj</h4>
+        <p>
+          Why does this exist, who is it for, and should I use it?
+        </p>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section class='row list'>
+  <h3>Ecosystem</h3>
+  <ul>
+    <li>
+      <a href='https://github.com/andrejewski/raj-compose'>
+        <h4>raj-compose</h4>
+        <p>
+          Program composition.
+          Applications assemble from small programs.
+        </p>
+      </a>
+    </li>
+    <li>
+      <a href='https://github.com/andrejewski/raj-react'>
+        <h4>raj-react</h4>
+        <p>
+          React bindings to integrate Raj's runtime into the React ecosystem.
+        </p>
+      </a>
+    </li>
+    <li>
+      <a href='https://github.com/andrejewski/raj-spa'>
+        <h4>raj-spa</h4>
+        <p>Single page applications, coordinating navigation and views.</p>
+      </a>
+    </li>
+    <li>
+      <a href='https://github.com/andrejewski/raj-web-debugger'>
+        <h4>raj-web-debugger</h4>
+        <p>Time traveling debugger to pause, play, and rewind programs.</p>
+      </a>
+    </li>
+  </ul>
 </section>
 </main>
 
