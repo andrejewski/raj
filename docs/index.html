@@ -60,6 +60,56 @@
       padding-top: 20px;
     }
 
+    .cta-container {
+      display: block;
+      position: relative;
+    }
+
+    .cta, .cta-ghost {
+      display: inline-block;
+      padding: 10px 15px;
+      text-decoration: none;
+      background-color: #08f;
+      border-radius: 3px;
+      color: #fff;
+      font-size: 20px;
+      transition: all 0.5s linear;
+    }
+
+    .cta-ghost {
+      position: relative;
+    }
+
+    .cta {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .cta span:after {
+      display: block;
+      content: 'You are awesome.';
+      opacity: 0;
+      font-size: 0px;
+      transition: all 0.5s linear;
+    }
+
+    .cta:hover {
+      top: -15px;
+      left: -30px;
+      right: -30px;
+      background-color: #09f;
+      padding: 25px 35px;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+
+    .cta:hover span:after {
+      opacity: 1;
+      font-size: 12px;
+    }
+
     .column-2 {
       display: inline-block;
       vertical-align: top;
@@ -135,7 +185,14 @@
     <h1>Raj</h1>
     <h2>The Elm Architecture for JavaScript</h2>
     <div class='buttons'>
-      <iframe src="https://ghbtns.com/github-btn.html?user=andrejewski&repo=raj&type=star&size=large" frameborder="0" scrolling="0" width="76px" height="30px"></iframe>
+      <div class='cta-container'>
+        <div class='cta-ghost'>
+          <span>Star on Github</span>
+          <a class='cta' href='https://github.com/andrejewski/raj'>
+            <span>Star on Github</span>
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 </section>
