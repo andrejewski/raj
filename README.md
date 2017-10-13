@@ -1,5 +1,5 @@
 # Raj
-> The best JavaScript framework
+> The Elm Architecture for JavaScript
 
 ```sh
 npm install raj

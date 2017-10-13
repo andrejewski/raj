@@ -1,6 +1,6 @@
 {
   "name": "raj",
-  "description": "The best JavaScript framework",
+  "description": "The Elm Architecture for JavaScript",
   "version": "0.0.9",
   "author": "Chris Andrejewski <christopher.andrejewski@gmail.com>",
   "bugs": {
@@ -14,9 +14,9 @@
   },
   "homepage": "https://github.com/andrejewski/raj#readme",
   "keywords": [
-    "best",
+    "architecture",
+    "elm",
     "framework",
-    "raj",
     "runtime"
   ],
   "license": "MIT",
