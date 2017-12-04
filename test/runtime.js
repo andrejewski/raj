@@ -39,7 +39,7 @@ test('program() should call view() after dispatch', t => {
 })
 
 test('program() should call done() when killed', t => {
-  t.plan(2)
+  t.plan(1)
   return new Promise(resolve => {
     const initialState = 'state'
     const kill = program({
@@ -50,10 +50,7 @@ test('program() should call done() when killed', t => {
       view () {},
       done (state) {
         t.is(state, initialState, 'the state is passed')
-        return () => {
-          t.pass('the effect is run')
-          resolve()
-        }
+        resolve()
       }
     })
 
