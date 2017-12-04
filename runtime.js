@@ -4,7 +4,6 @@ exports.program = function (program) {
   var done = program.done
   var state
   var isRunning = true
-  var timeout = setTimeout
 
   function dispatch (message) {
     if (isRunning) {
@@ -16,7 +15,7 @@ exports.program = function (program) {
     state = change[0]
     var effect = change[1]
     if (effect) {
-      timeout(function () { effect(dispatch) }, 0)
+      setTimeout(function () { effect(dispatch) }, 0)
     }
     view(state, dispatch)
   }
