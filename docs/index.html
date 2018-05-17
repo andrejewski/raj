@@ -18,6 +18,13 @@
       padding-bottom: 3em;
     }
 
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 20px;
+    }
+
     .row {
       margin: 0px auto;
       padding: 20px 0px;
@@ -31,8 +38,35 @@
       margin: 0px;
     }
 
+    .submit {
+      background-color: #fafafa;
+      padding: 30px 20px;
+      font-size: 1.2em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit p { 
+      margin: 0px;
+      padding-bottom: 0.5em;
+    }
+
+    .submit .button {
+      display: inline-block;
+      text-decoration: underline;
+      color: #08f;
+      margin: 20px auto 0px;
+    }
+
+    .submit .things {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      opacity: 0.75;
+      width: 160px;
+    }
+
     .header {
-      text-align: center;
       padding: 50px 0px;
 
       background: #ddeeff;
@@ -60,54 +94,14 @@
       padding-top: 20px;
     }
 
-    .cta-container {
-      display: block;
-      position: relative;
-    }
-
-    .cta, .cta-ghost {
-      display: inline-block;
-      padding: 10px 15px;
-      text-decoration: none;
-      background-color: #08f;
-      border-radius: 3px;
-      color: #fff;
-      font-size: 20px;
-      transition: all 0.5s linear;
-    }
-
-    .cta-ghost {
-      position: relative;
-    }
-
     .cta {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-    }
-
-    .cta span:after {
-      display: block;
-      content: 'You are awesome.';
-      opacity: 0;
-      font-size: 0px;
-      transition: all 0.5s linear;
-    }
-
-    .cta:hover {
-      top: -15px;
-      left: -30px;
-      right: -30px;
-      background-color: #09f;
-      padding: 25px 35px;
-      font-size: 20px;
-      border-radius: 5px;
-    }
-
-    .cta:hover span:after {
-      opacity: 1;
-      font-size: 12px;
+      display: inline-block;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-size: 1.2em;
+      background-color: #08f;
+      border-radius: 2px;
+      color: #fff;
     }
 
     .column-2 {
@@ -138,8 +132,8 @@
       color: inherit;
     }
 
-    .list li a:hover {
-      background-color: #def;
+    .list li a {
+      cursor: pointer;
     }
 
     .list li a:hover h4 {
@@ -149,12 +143,58 @@
     .list li h4 {
       font-family: Lato, Roboto, Helvetica, Arial, sans-serif;
       margin: 0px;
-      font-size: 1.2em;
+      font-size: 1.3em;
     }
 
     .list li p {
       margin: 0px;
       font-size: 1em;
+    }
+
+    .list li a:hover .tag { opacity: 1; }
+
+    .tag {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 0.55em;
+      font-weight: normal;
+      font-family: Roboto;
+      text-shadow: 0 1px 0px rgba(0,0,0,0.2);
+      padding: 3px 6px;
+      margin: 0px 5px 4px;
+      border-radius: 3px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      opacity: 0.8;
+    }
+
+    .tag-article {
+      color: #fff;
+      background-color: #58f;
+    }
+
+    .tag-tutorial {
+      color: #fff;
+      background-color: #32ad64;
+    }
+
+    .tag-slides {
+      color: #fff;
+      background-color: #E04E39;
+    }
+
+    .tag-core {
+      color: #fff;
+      background-color: rgb(194, 191, 7);
+    }
+
+    .tag-view {
+      color: #fff;
+      background-color: purple;
+    }
+
+    .tag-awesome {
+      color: #fff;
+      background-color: #222;
     }
 
     @media (max-width: 720px) {
@@ -174,6 +214,17 @@
         margin: 0px auto;
       }
     }
+
+    .copyright {
+      padding: 20px;
+      color: #555;
+    }
+
+    .copyright a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .copyright a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -181,19 +232,20 @@
 <main>
 <div class='header'>
 <section class='row'>
-  <header>
-    <h1>Raj</h1>
-    <h2>The Elm Architecture for JavaScript</h2>
-    <div class='buttons'>
-      <div class='cta-container'>
-        <div class='cta-ghost'>
-          <span>Star on Github</span>
-          <a class='cta' href='https://github.com/andrejewski/raj'>
-            <span>Star on Github</span>
-          </a>
-        </div>
+  <header class='masthead'>
+    <div>
+      <h1>Raj</h1>
+      <h2>The Elm Architecture for JavaScript</h2>
+      <div class='buttons'>
+        <a class='cta' href='https://github.com/andrejewski/raj'>View on Github</a>
       </div>
     </div>
+    <img
+      src='./raj.svg'
+      alt='An elephant with a crown is the Raj framework mascot.'
+      title='An elephant with a crown is the Raj framework mascot. Raj is named after Raj from television cartoon Campo Lazlo. Raj is also "king" in India and Raj is king of JavaScript frameworks.'
+      width='280'
+      />
   </header>
 </section>
 </div>
@@ -246,30 +298,46 @@
   <h3>Resources</h3>
   <ul>
     <li>
+      <a href='https://jew.ski/why-raj/'>
+        <h4>What is Raj <span class='tag tag-article'>Article</span></h4>
+        <p>
+          What are the benefits to Raj and it is right for you.
+        </p>
+      </a>
+    </li>
+    <li>
+      <a href='https://jew.ski/why-raj/'>
+        <h4>Why is Raj <span class='tag tag-article'>Article</span></h4>
+        <p>
+          Why does this exist and why was it made the way it was.
+        </p>
+      </a>
+    </li>
+    <li>
       <a href='https://github.com/andrejewski/raj-by-example'>
-        <h4>Raj by Example</h4>
+        <h4>Raj by Example <span class='tag tag-tutorial'>Tutorial</span></h4>
         <p>
           Learn how to build programs and applications with Raj.
         </p>
       </a>
     </li>
     <li>
-      <a href='https://jew.ski/why-raj/'>
-        <h4>Why Raj</h4>
-        <p>
-          Why does this exist, who is it for, and should I use it?
-        </p>
-      </a>
-    </li>
+        <a href='https://goo.gl/2jGLR9'>
+          <h4>Fun on the Frontend <span class='tag tag-slides'>Slides</span></h4>
+          <p>
+            The problems Raj solves for front-end development.
+          </p>
+        </a>
+      </li>
   </ul>
 </section>
 
 <section class='row list'>
-  <h3>Ecosystem</h3>
+  <h3>Packages</h3>
   <ul>
     <li>
       <a href='https://github.com/andrejewski/raj-compose'>
-        <h4>raj-compose</h4>
+        <h4>raj-compose <span class='tag tag-core'>Core</span></h4>
         <p>
           Program composition.
           Applications assemble from small programs.
@@ -277,10 +345,33 @@
       </a>
     </li>
     <li>
+      <a href='https://github.com/andrejewski/raj-web-debugger'>
+        <h4>raj-web-debugger <span class='tag tag-awesome'>Awesome</span></h4>
+        <p>Time traveling debugger to pause, play, and rewind programs.</p>
+      </a>
+    </li>
+    <li>
       <a href='https://github.com/andrejewski/raj-react'>
-        <h4>raj-react</h4>
+        <h4>raj-react <span class='tag tag-view'>View</span></h4>
         <p>
           React bindings to integrate Raj's runtime into the React ecosystem.
+        </p>
+      </a>
+    </li>
+    <li>
+      <a href='https://github.com/matthewp/raj-fritz'>
+        <h4>raj-fritz <span class='tag tag-view'>View</span></h4>
+        <p>
+          Fritz web component bindings to integrate Raj's runtime.
+        </p>
+      </a>
+    </li>
+    <li>
+      <a href='https://github.com/andrejewski/raj-subscription'>
+        <h4>raj-subscription</h4>
+        <p>
+          Cancelable effects.
+          Utilities and declarative subscriptions.
         </p>
       </a>
     </li>
@@ -290,14 +381,56 @@
         <p>Single page applications, coordinating navigation and views.</p>
       </a>
     </li>
-    <li>
-      <a href='https://github.com/andrejewski/raj-web-debugger'>
-        <h4>raj-web-debugger</h4>
-        <p>Time traveling debugger to pause, play, and rewind programs.</p>
+    <!--<li>
+      <a href='https://github.com/andrejewski/tagmeme'>
+        <h4>tagmeme</h4>
+        <p>Tagged unions for strict runtime messages and message creators.</p>
       </a>
     </li>
+    <li>
+      <a href='https://github.com/andrejewski/tagged-routes'>
+        <h4>tagged-routes</h4>
+        <p>URL building and parsing with tagged unions.</p>
+      </a>
+    </li>-->
   </ul>
 </section>
+
+<!-- <section class='row list'>
+  <h3>Adopters</h3>
+  <ul>
+      <li>
+        <a href='https://www.bitovi.com/?utm_source=raj_homepage'>
+          <h4>Bitovi</h4>
+          <p>
+            Fully remote JavaScript and user-experience design consultants.
+          </p>
+        </a>
+      </li>
+      <li>
+        <a href='http://www.grierforensics.com/?utm_source=raj_homepage'>
+          <h4>Grier Forensics</h4>
+          <p>
+            Government and business digital forensics consultants.
+          </p>
+        </a>
+      </li>
+  </ul>
+</section> -->
+<section class='row submit'>
+  <p>Have you adopted Raj into your software?</p>
+  <p>Have you built a library for the Raj ecosystem?</p>
+  <p>Have you written or presented about Raj?</p>
+
+  <a class='button' href='https://github.com/andrejewski/raj/pulls'>Submit your thingy</a>
+
+  <img class='things' alt='Submit all the Raj things' src='crown.svg' />
+</section>
+
+<footer class='row footer copyright'>
+  <p>Copyright 2018 <a href='https://jew.ski/'>Chris Andrejewski</a>; Source code MIT Licensed</p>
+</footer>
+
 </main>
 
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-43674193-3', 'auto');ga('send', 'pageview');</script>
