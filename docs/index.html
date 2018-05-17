@@ -39,11 +39,12 @@
     }
 
     .submit {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       background-color: #fafafa;
       padding: 30px 20px;
       font-size: 1.2em;
-      position: relative;
-      overflow: hidden;
     }
 
     .submit p { 
@@ -59,10 +60,6 @@
     }
 
     .submit .things {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      opacity: 0.75;
       width: 160px;
     }
 
@@ -197,7 +194,41 @@
       background-color: #222;
     }
 
+    .copyright {
+      padding: 20px;
+      color: #555;
+    }
+
+    .copyright a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .copyright a:hover { text-decoration: underline; }
+
     @media (max-width: 720px) {
+      .masthead {
+        flex-direction: column-reverse;
+      }
+
+      .masthead > div {
+        text-align: center;
+      }
+
+      .submit {
+        flex-direction: column;
+        padding-bottom: 0px;
+      }
+
+      .submit > div {
+        text-align: center;
+        padding-bottom: 20px;
+      }
+
+      .copyright {
+        text-align: center;
+      }
+
       .row h3 {
         max-width: 350px;
         margin: 0px auto;
@@ -214,17 +245,6 @@
         margin: 0px auto;
       }
     }
-
-    .copyright {
-      padding: 20px;
-      color: #555;
-    }
-
-    .copyright a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .copyright a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -298,7 +318,7 @@
   <h3>Resources</h3>
   <ul>
     <li>
-      <a href='https://jew.ski/why-raj/'>
+      <a href='https://jew.ski/what-is-raj/'>
         <h4>What is Raj <span class='tag tag-article'>Article</span></h4>
         <p>
           What are the benefits to Raj and it is right for you.
@@ -307,7 +327,7 @@
     </li>
     <li>
       <a href='https://jew.ski/why-raj/'>
-        <h4>Why is Raj <span class='tag tag-article'>Article</span></h4>
+        <h4>Why Raj <span class='tag tag-article'>Article</span></h4>
         <p>
           Why does this exist and why was it made the way it was.
         </p>
@@ -385,11 +405,13 @@
 </section>
 
 <section class='row submit'>
-  <p>Have you adopted Raj into your software?</p>
-  <p>Have you built a library for the Raj ecosystem?</p>
-  <p>Have you written or presented about Raj?</p>
+  <div>
+    <p>Have you adopted Raj into your software?</p>
+    <p>Have you built a library for the Raj ecosystem?</p>
+    <p>Have you written or presented about Raj?</p>
 
-  <a class='button' href='https://github.com/andrejewski/raj/pulls'>Submit your thingy</a>
+    <a class='button' href='https://github.com/andrejewski/raj/issues'>Submit your thingy</a>
+  </div>
 
   <img class='things' alt='Submit all the Raj things' src='crown.svg' />
 </section>
