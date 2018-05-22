@@ -9,34 +9,31 @@ export const init = [{
   error: null
 }]
 
-export const ChangeQuery = tag()
-export const ReceiveResults = tag()
-export const ReceiveError = tag()
 export const Search = tag.union([
-  ChangeQuery,
-  ReceiveError,
-  ReceiveResults
+  'ChangeQuery',
+  'ReceiveError',
+  'ReceiveResults'
 ])
 
 export function update (msg, state) {
-  return Search.match(msg, [
-    ChangeQuery, query => [{
+  return Search.match(msg, {
+    ChangeQuery: query => [{
       ...state,
       searchQuery: query,
       isLoading: true
     }, fetchResults(query)],
-    ReceiveResults, results => [{
+    ReceiveResults: results => [{
       ...state,
       searchResults: results,
       isLoading: false,
       error: null
     }],
-    ReceiveError, error => [{
+    ReceiveError: error => [{
       ...state,
       error,
       isLoading: false
     }]
-  ])
+  })
 }
 
 export function view (state, dispatch) {
@@ -44,7 +41,7 @@ export function view (state, dispatch) {
     <InputView
       text={state.searchQuery}
       onChange={newQuery =>
-        dispatch(ChangeQuery(newQuery))
+        dispatch(Search.ChangeQuery(newQuery))
       } />
     <ul>
       {state.results.map(result =>
@@ -69,10 +66,10 @@ export function fetchResults (query) {
     return window.fetch('/my/search/endpoint')
       .then(res => res.json())
       .then(payload => {
-        dispatch(ReceiveResults(payload.results))
+        dispatch(Search.ReceiveResults(payload.results))
       })
       .catch(error => {
-        dispatch(ReceiveError(error))
+        dispatch(Search.ReceiveError(error))
       })
   }
 }
