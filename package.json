@@ -1,7 +1,7 @@
 {
   "name": "raj",
   "description": "The Elm Architecture for JavaScript",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "author": "Chris Andrejewski <christopher.andrejewski@gmail.com>",
   "bugs": {
     "url": "https://github.com/andrejewski/raj/issues"
