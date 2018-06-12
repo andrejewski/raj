@@ -15,7 +15,7 @@ exports.program = function (program) {
     state = change[0]
     var effect = change[1]
     if (effect) {
-      setTimeout(function () { effect(dispatch) }, 0)
+      effect(dispatch)
     }
     view(state, dispatch)
   }
