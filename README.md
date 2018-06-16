@@ -1,4 +1,9 @@
-# Raj
+<h1 align="center">
+  <a href='https://jew.ski/raj/'>
+	  <img width="320" src="docs/raj.svg" alt="Raj"><br><br>
+  </a>
+</h1>
+
 > The Elm Architecture for JavaScript
 
 ```sh
@@ -71,38 +76,3 @@ interface RajProgram<State, Message, View> {
 *Note:* TypeScript is not required for Raj applications. This is hard to read, so I wanted syntax highlighting from a typed language.
 
 The `runtime` module itself is about 40 lines of JavaScript, which may be easier to understand for those who are not familiar with TypeScript.
-
-## Ecosystem
-
-##### Raj packages
-
-#### [`raj-compose`](https://github.com/andrejewski/raj-compose)
-Program composition. Raj applications assemble from small programs. Composition utilities are in this package.
-
-#### [`raj-web-debugger`](https://github.com/andrejewski/raj-web-debugger)
-Time traveling debugger. The design of Raj programs allows us to pause, play, and rewind them. This package contains a debugger with those features for web applications.
-
-#### [`raj-react`](https://github.com/andrejewski/raj-react)
-This package integrates Raj's runtime into the React ecosystem.
-
-#### [`raj-fritz`](https://github.com/matthewp/raj-fritz)
-Fritz web component bindings to integrate Raj's runtime.
-
-#### [`raj-subscription`](https://github.com/andrejewski/raj-compose)
-Cancelable effects. Utilities and declarative subscriptions.
-
-#### [`raj-spa`](https://github.com/andrejewski/raj-spa)
-Single page applications. Most apps need a way of coordinating navigation and views. This package provides a coordinator which has lazy-loading and code-splitting support.
-
-##### Recommended non-Raj packages
-
-#### [`tagmeme`](https://github.com/andrejewski/tagmeme)
-Tagged union library. The Raj runtime is message driven. Tagmeme is the recommended way to construct messages. It has tagged unions with pattern matching.
-
-## Roadmap
-
-Raj is small, leaving most complexity to libraries or applications. Right now the Raj ecosystem is `0.0.x` to ensure that no one can get mad as we make changes to the framework.
-
-A Raj `1.0.0` will happen once we iron out all conceptual problems and have built enough real-world applications for us to feel confident in promoting this approach.
-
-[I](https://github.com/andrejewski) created this framework, but don't want others to miss out on contributing to its development or building applications with it. If I find good collaborator(s), we can switch these projects over to a community organization and/or a mono-repo as we build towards a version 1. Please reach out if interested in contributing to or building an application with Raj.
