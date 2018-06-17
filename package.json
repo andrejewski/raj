@@ -10,6 +10,7 @@
   "devDependencies": {
     "ava": "^0.25.0",
     "fixpack": "^2.3.1",
+    "prettier": "^1.13.5",
     "standard": "^11.0.0"
   },
   "homepage": "https://jew.ski/raj/",
@@ -26,7 +27,7 @@
     "url": "git+https://github.com/andrejewski/raj.git"
   },
   "scripts": {
-    "lint": "fixpack && standard --fix",
+    "lint": "fixpack && prettier index.js test/**/*.js --write && standard --fix",
     "test": "npm run lint && ava"
   }
 }
