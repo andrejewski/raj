@@ -18,9 +18,9 @@ npm install raj
 A counter that increments by one every time the user confirms.
 
 ```js
-import {program} from 'raj/runtime'
+import { runtime } from 'raj'
 
-program({
+runtime({
   init: [0], // State is an integer to count
   update (message, state) {
     return [state + 1] // Increment the state
@@ -34,7 +34,8 @@ program({
 })
 ```
 
-*Note:* Raj is view layer agnostic. Here we use the browser's built-in view to play the part.
+*Note:* Raj is view layer agnostic.
+Here we use the browser's built-in view to play the part.
 
 ## Architecture
 
@@ -50,10 +51,12 @@ Building any app follows the same steps:
 1. Define your behaviors with `update(message, state)`
 1. Define your effects as functions which accept a dispatch function
 1. Define your view with `view(state, dispatch)`
-1. Tie it all together with `program()`
+1. Tie it all together with `runtime()`
 
 ## Documentation
-The `raj` package contains a single module `raj/runtime`. This module creates runtimes for every Raj application. The `runtime` module exports a single method `program` which will create a runtime for a "program." These programs have the same interface.
+The `raj` package contains a function `runtime`.
+This function creates a runtime for a Raj program.
+These programs have the same interface.
 
 ```ts
 interface RajProgram<State, Message, View> {
@@ -73,6 +76,6 @@ interface RajProgram<State, Message, View> {
 }
 ```
 
-*Note:* TypeScript is not required for Raj applications. This is hard to read, so I wanted syntax highlighting from a typed language.
-
-The `runtime` module itself is about 40 lines of JavaScript, which may be easier to understand for those who are not familiar with TypeScript.
+*Note:* TypeScript is not required for Raj applications.
+This is hard to read, so I wanted syntax highlighting from a typed language.
+Raj is 34 lines of JavaScript, which may be easier to understand for those who are not familiar with TypeScript.

@@ -1,10 +1,10 @@
 import test from 'ava'
-import {program} from '../runtime'
+import { runtime } from '../'
 
-test('program() should call view() initially', t => {
+test('runtime() should call view() initially', t => {
   const initialState = 1
   return new Promise(resolve => {
-    program({
+    runtime({
       init: [initialState],
       view (state) {
         t.is(state, initialState)
@@ -14,10 +14,10 @@ test('program() should call view() initially', t => {
   })
 })
 
-test('program() should call view() after dispatch', t => {
+test('runtime() should call view() after dispatch', t => {
   let count = 0
   return new Promise(resolve => {
-    program({
+    runtime({
       init: ['init'],
       update (msg) {
         return [msg]
@@ -38,11 +38,11 @@ test('program() should call view() after dispatch', t => {
   }).then(() => t.is(count, 3))
 })
 
-test('program() should call done() when killed', t => {
+test('runtime() should call done() when killed', t => {
   t.plan(1)
   return new Promise(resolve => {
     const initialState = 'state'
-    const kill = program({
+    const kill = runtime({
       init: [initialState],
       update (msg, state) {
         return state
@@ -58,7 +58,7 @@ test('program() should call done() when killed', t => {
   })
 })
 
-test('program() should not call update/view if killed', t => {
+test('runtime() should not call update/view if killed', t => {
   t.plan(2)
   let initialRender = true
   const initialState = 'state'
@@ -70,7 +70,7 @@ test('program() should not call update/view if killed', t => {
         resolve()
       }, 10)
     }
-    const kill = program({
+    const kill = runtime({
       init: [initialState, afterKillEffect],
       update () {
         t.fail('update() should not be called')
@@ -90,9 +90,9 @@ test('program() should not call update/view if killed', t => {
   })
 })
 
-test('program() should only call done() once', t => {
+test('runtime() should only call done() once', t => {
   let initialCall = true
-  const kill = program({
+  const kill = runtime({
     init: [],
     update () {},
     view () {},
