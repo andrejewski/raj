@@ -1,7 +1,7 @@
 <h1 align="center">
-  <a href='https://jew.ski/raj/'>
-	  <img width="320" src="docs/raj.svg" alt="Raj"><br><br>
-  </a>
+	<img width="320" src="docs/raj.svg" alt="Raj">
+  <br>
+  <br>
 </h1>
 
 > The Elm Architecture for JavaScript
