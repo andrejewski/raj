@@ -39,43 +39,86 @@ Here we use the browser's built-in view to play the part.
 
 ## Architecture
 
-The data flow is unidirectional.
-The update creates a new state and optionally triggers an effect based on the current state and a received message.
-The view is a function of state.
-The view and any side-effects communicate by dispatching messages.
+Raj applications are structured as programs.
 
-Building any app follows the same steps:
+Every program begins with an initial state, which can be anything, and an optional effect.
+These are put into an array which is the `init` property of the program.
 
-1. Define your data model with `init`
-1. Define your messages
-1. Define your behaviors with `update(message, state)`
-1. Define your effects as functions which accept a dispatch function
-1. Define your view with `view(state, dispatch)`
-1. Tie it all together with `runtime()`
+```js
+const init = [initialState, /* optional */ initialEffect]
+```
 
-## Documentation
-The `raj` package contains a function `runtime`.
-This function creates a runtime for a Raj program.
-These programs have the same interface.
+"Effects" are functions which receive a function `dispatch`.
+Effects handle asynchronous work like data-fetching, timers, and managing event listeners.
+They can pass `dispatch` messages and Raj uses those to update the state.
 
-```ts
-interface RajProgram<State, Message, View> {
-  init: [
-    // initial state
-    State,
-    // initial effect (optional)
-    void | ((dispatch: (message: Message) => void) => void)
-  ]
-  update (message: Message, state: State): [
-    // new state
-    State,
-    // new effect (optional)
-    void | ((dispatch: (message: Message) => void) => void)
-  ]
-  view (state: State, dispatch: (message: Message) => void): View;
+```js
+function effect (dispatch) {
+  // do anything or nothing; preferably something asynchronous
+  // call dispatch 0, 1, or N times
+  dispatch(message)
 }
 ```
 
-*Note:* TypeScript is not required for Raj applications.
-This is hard to read, so I wanted syntax highlighting from a typed language.
-Raj is 34 lines of JavaScript, which may be easier to understand for those who are not familiar with TypeScript.
+A "message" can be anything; a server response, the current time, even `undefined`.
+
+When a message is dispatched, Raj passes that message and the current state to `update`.
+The `update` function returns a new state and optional effect.
+The business logic of the program is handled with this function.
+
+```js
+function update (message, currentState) {
+  return [newState, /* optional */ effect]
+}
+```
+
+The `view` is a special effect that receives both the current state and the `dispatch` function.
+The `view` can return anything.
+For the React view layer, the `view` returns React elements to be rendered.
+
+```js
+function view (currentState, dispatch) {
+  // anything, depending on choice of view library
+}
+```
+
+The `init`, `update`, and `view` form a "program" which is just an object with those properties:
+
+```js
+const program = {
+  init: [initialState, /* optional */ initialEffect],
+  update (message, currentState) {
+    return [newState, /* optional */ effect]
+  },
+  view (currentState, dispatch) {
+    // anything, depending on choice of view library
+  }
+};
+```
+
+Building any program follows the same steps:
+
+1. Define the initial state and effect with `init`
+1. Define the state transitions and effects with `update(message, state)`
+1. Define the view with `view(state, dispatch)`
+1. Tie it all together into a `program`
+
+Programs compose, so a parent program might contain child programs.
+
+- The parent's `init` may contain the child's `init`.
+- The parent's `update` may call the child's `update` with messages for the child and the child's state.
+- The parent's `view` may call the child's `view` with the child's state and `dispatch`.
+
+In this way, programs most often compose into a tree structure.
+
+The root program is passed to Raj's `runtime`.
+The runtime calls the program, manages its state, and runs its effects.
+
+```js
+import { runtime } from 'raj'
+import { program } from './app'
+
+runtime(program)
+```
+
+The [Raj by Example](https://github.com/andrejewski/raj-by-example) documentation covers this in greater detail.
