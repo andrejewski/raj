@@ -14,6 +14,22 @@ npm install raj
 [![Build Status](https://travis-ci.org/andrejewski/raj.svg?branch=master)](https://travis-ci.org/andrejewski/raj)
 [![Greenkeeper badge](https://badges.greenkeeper.io/andrejewski/raj.svg)](https://greenkeeper.io/)
 
+## Features
+
+- **Understandable**
+  <br>Raj is 34 lines; 190 bytes minified. This framework can fit in your head or even a tweet.
+
+- **Testable**
+  <br>Raj forces us to design for better separated concerns, simpler logic, and easier tests.
+
+- **Minimal**
+  <br>Raj provides a tiny foundation for libraries and applications.
+
+- **Portable**
+  <br>Raj is view layer agnostic. The view is a side effect of state.
+
+Check out the [homepage](https://jew.ski/raj/) for resources and ecosystem packages.
+
 ## Example
 A counter that increments by one every time the user confirms.
 
@@ -74,7 +90,7 @@ function update (message, currentState) {
 
 The `view` is a special effect that receives both the current state and the `dispatch` function.
 The `view` can return anything.
-For the React view layer, the `view` returns React elements to be rendered.
+For the [React view layer](https://github.com/andrejewski/raj-react), the `view` returns React elements to be rendered.
 
 ```js
 function view (currentState, dispatch) {
