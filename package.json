@@ -29,5 +29,6 @@
   "scripts": {
     "lint": "fixpack && prettier index.js test/**/*.js --write && standard --fix",
     "test": "npm run lint && ava"
-  }
+  },
+  "types": "index.d.ts"
 }
