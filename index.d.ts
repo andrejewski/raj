@@ -21,7 +21,7 @@ export interface Done<S> {
 }
 
 export interface Program<S, M, V> {
-  readonly init?: Change<S, M>;
+  readonly init: Change<S, M>;
   readonly update: Update<M, S>;
   readonly view: View<M, S, V>;
   readonly done?: Done<S>;
