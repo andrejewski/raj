@@ -9,7 +9,7 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.25.0",
-    "fixpack": "^2.3.1",
+    "fixpack": "^3.0.5",
     "prettier": "^1.13.5",
     "standard": "^11.0.0"
   },
